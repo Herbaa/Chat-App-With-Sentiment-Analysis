@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  username  String
+  text      String
+  score     Int      @default(0)
+  sentiment String   @default("neutral")
+  createdAt DateTime @default(now())
+}
